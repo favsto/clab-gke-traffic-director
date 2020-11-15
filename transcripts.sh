@@ -18,3 +18,8 @@ kubectl get pods
 NEG_NAME=<neg-name-from-console>
 # NEG_NAME=k8s1-3dd59e00-default-service-test-80-XYZ
 
+# Creating the health check
+gcloud beta compute health-checks create http td-gke-health-check --project=fausto-labs --port=80 --request-path=/ --proxy-header=NONE --no-enable-logging --check-interval=5 --timeout=5 --unhealthy-threshold=2 --healthy-threshold=2
+
+# Creating the backend service
+# ...
